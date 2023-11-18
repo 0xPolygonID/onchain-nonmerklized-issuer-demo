@@ -49,6 +49,9 @@ const App = () => {
       ).send({from: account});
 
       
+      // waiting for some confirmation
+      await new Promise(r => setTimeout(r, 8000));
+
       const rawClaim = await onchainNonMerklizedIssuer.methods.getUserClaim(
         userId.bigInt(), 
         onchainCredentialUUID,
