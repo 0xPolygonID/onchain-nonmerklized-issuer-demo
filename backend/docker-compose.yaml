@@ -1,0 +1,9 @@
+version: '3'
+services:
+  onchainmongo:
+    image: mongo:7.0.0-rc2-jammy
+    ports:
+     - "27017:27017"
+    volumes:
+      - .mongodata/db:/data/db
+

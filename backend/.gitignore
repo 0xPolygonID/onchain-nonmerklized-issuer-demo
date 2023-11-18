@@ -1,0 +1,6 @@
+.env
+
+resolvers.settings.yaml
+
+./backend
+.mongodata
