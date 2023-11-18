@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@iden3/js-iden3-core": "^1.1.0",
     "@metamask/sdk": "^0.4.1",
     "@mui/material": "^5.13.7",
     "@theme-ui/presets": "^0.16.0",
