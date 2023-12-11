@@ -77,6 +77,10 @@ func init() {
 		AuthV2VerificationKeyPath = defaultPathToAuthV2VerificationKey
 	}
 
+	if NodeRPCURL == "" {
+		log.Fatalf("NODE_RPC_URL environment variable is not set")
+	}
+
 	resolverSettingsConfigPath := os.Getenv("RESOLVER_SETTINGS_CONFIG_PATH")
 	if resolverSettingsConfigPath == "" {
 		resolverSettingsConfigPath = defaultPathToResolverSettings
