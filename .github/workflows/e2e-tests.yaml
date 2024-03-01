@@ -1,0 +1,46 @@
+name: e2e hardhat tests
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run_e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build docker container
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: build/Dockerfile
+          load: true
+          tags: onchain-non-merklized-issuer-demo:latest
+          cache-from: type=gha
+          cache-to: type=gha
+
+      - name: Run container
+        run: |
+          docker run -d -p 8080:8080 \
+          --name onchain-non-merklized-issuer-demo onchain-non-merklized-issuer-demo:latest
+      
+      - name: Run Newman
+        run: |
+          newman run tests/e2e/e2e.postman_collection.json

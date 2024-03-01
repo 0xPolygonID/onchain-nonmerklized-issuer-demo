@@ -1,1 +1,14 @@
+# Bin files
+onchain-non-merklized-issuer-demo
+
+# IDE
 .vscode
+
+# Docker volumes
+data
+
+# Env files
+.env
+.env.*
+
+!*.env.example
