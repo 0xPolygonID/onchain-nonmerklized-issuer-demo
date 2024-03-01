@@ -1,5 +1,5 @@
 # Build the application
-FROM --platform=$BUILDPLATFORM golang:1.21.3-bookworm as base
+FROM --platform=$BUILDPLATFORM golang:1.21.4-bookworm as base
 ARG build_tags=""
 
 WORKDIR /build
