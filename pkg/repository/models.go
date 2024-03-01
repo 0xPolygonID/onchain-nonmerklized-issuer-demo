@@ -25,6 +25,7 @@ type credentialModel struct {
 	Issuer            string
 	CredentialSchema  verifiable.CredentialSchema
 	Proof             interface{}
+	DisplayMethod     *verifiable.DisplayMethod
 }
 
 func NewCredentailModelFromW3C(vc *verifiable.W3CCredential) (credentialModel, error) {
@@ -57,6 +58,7 @@ func NewCredentailModelFromW3C(vc *verifiable.W3CCredential) (credentialModel, e
 		Issuer:           vc.Issuer,
 		CredentialSchema: vc.CredentialSchema,
 		Proof:            fullProof,
+		DisplayMethod:    vc.DisplayMethod,
 	}, nil
 }
 
@@ -104,5 +106,6 @@ func (cm *credentialModel) ToW3C() (*verifiable.W3CCredential, error) {
 		Issuer:           cm.Issuer,
 		CredentialSchema: cm.CredentialSchema,
 		Proof:            proofs,
+		DisplayMethod:    cm.DisplayMethod,
 	}, nil
 }
