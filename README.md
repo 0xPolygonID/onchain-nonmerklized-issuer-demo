@@ -4,7 +4,7 @@
 
 ### Description
 
-This is a demo frontend page that communicates with the [non-merklized on-chain issuer](https://github.com/0xPolygonID/contracts/blob/main/contracts/examples/BalanceCredentialIssuer.sol) to issuer non-merklized credential.
+This is a demo frontend page that communicates with the [non-merklized on-chain issuer](https://github.com/0xPolygonID/contracts/blob/main/contracts/examples/BalanceCredentialIssuer.sol) to issuer non-merklized credential. The **on-chain non-merklized issuer** can use information from a blockchain (such as balance, token ownership, etc.) to issue a credential directly on the blockchain. This approach is decentralized and trustless - no need to trust an issuer to act honestly, because it's enforced by the smart contract and auditable on chain. But it comes with a few limitations: max 4 data fields in the credential and data is public. More about [non-merklized credentials](https://docs.iden3.io/protocol/non-merklized/). You can also consider the [merklized on-chain issuer](https://github.com/0xPolygonID/onchain-merklized-issuer-demo) solution if you need a centralised issuer without a limit on the number of fields.
 
 ### Quick Start Installation 
 
@@ -15,7 +15,7 @@ This is a demo frontend page that communicates with the [non-merklized on-chain 
 
 **Steps to run:**
 
-1. Deploy the [non-merklized on-chain issuer](https://github.com/0xPolygonID/contracts/blob/main/contracts/examples/BalanceCredentialIssuer.sol). [Script to deploy](https://github.com/0xPolygonID/contracts/blob/main/scripts/deployBalanceCredentialIssuer.ts) or use the [npm command](https://github.com/0xPolygonID/contracts/blob/d308e1f586ea177005b34872992d16c3cb20e474/package.json#L62). The **on-chain non-merklized issuer** can use information from a blockchain (such as balance, token ownership, etc.) to issue a credential directly on the blockchain. This approach is decentralized and trustless - no need to trust an issuer to act honestly, because it's enforced by the smart contract and auditable on chain. But it comes with a few limitations: max 4 data fields in the credential and data is public. More about [non-merklized credentials](https://docs.iden3.io/protocol/non-merklized/). You can also consider the [merklized on-chain issuer](https://github.com/0xPolygonID/onchain-merklized-issuer-demo) solution if you need a centralised issuer without a limit on the number of fields.
+1. Deploy the [non-merklized on-chain issuer](https://github.com/0xPolygonID/contracts/blob/main/contracts/examples/BalanceCredentialIssuer.sol). [Script to deploy](https://github.com/0xPolygonID/contracts/blob/main/scripts/deployBalanceCredentialIssuer.ts) or use the [npm command](https://github.com/0xPolygonID/contracts/blob/d308e1f586ea177005b34872992d16c3cb20e474/package.json#L62). 
 
 2. Copy `.env.example` to `.env`
     ```sh
@@ -57,7 +57,7 @@ This is a demo frontend page that communicates with the [non-merklized on-chain 
 2. Choose `custom` from the drop-down menu.
 3. Select the verifier based on your network:
     - For polygon mumbai: `Mumbai`
-    - For polygon mainnet: `Main`
+    - For polygon mainnet: `Mainnet`
 4. Fill out the form:
     - **Circuit Id**: Credential Atomic Query MTP
     - **Url**: https://gist.githubusercontent.com/ilya-korotya/660496c859f8d31a7d2a92ca5e970967/raw/6b5fc14fe630c17bfa52e05e08fdc8394c5ea0ce/non-merklized-non-zero-balance.jsonld
