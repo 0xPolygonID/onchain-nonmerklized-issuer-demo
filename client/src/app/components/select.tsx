@@ -12,11 +12,9 @@ const Selecter: React.FC<ListProps> = ({ datalist, label, callback }) => {
   const [selectedValue, setSelectedValue] = React.useState('');
   
   useEffect(() => {
-    if (datalist.length > 0) {
-      setSelectedValue(datalist[0]);
-      callback && callback(datalist[0]);
-    }
-  }, [datalist, callback]);
+    setSelectedValue(selectedValue || datalist[0]);
+    callback && callback(selectedValue);
+  }, [datalist, selectedValue, callback]);
 
   const handleChange = (event: SelectChangeEvent) => {
     const selectedValue = event.target.value as string;

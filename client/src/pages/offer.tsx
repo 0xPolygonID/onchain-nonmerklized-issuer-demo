@@ -41,13 +41,13 @@ const App = () => {
         body: {
           credentials: [{
             id: routerQuery.claimId as string,
-            description: 'Non-zero balance credential',
+            description: "Non-zero balance credential",
           }],
           transaction_data: {
             contract_address: addHexPrefix(routerQuery.contractAddress as string),
-            method_id: '0x37c1d9ff',
+            method_id: "0x37c1d9ff",
             chain_id: 80001,
-            network: 'polygon-mumbai',
+            network: "polygon-mumbai",
           }
         },
         from: routerQuery.issuer as string,
