@@ -3,7 +3,6 @@ import { QRCode } from '@/app/components'
 import { useRouter } from 'next/router';
 import { Grid, Typography } from '@mui/material';
 import SelectedIssuerContext from '@/contexts/SelectedIssuerContext';
-import * as sdk from '@0xpolygonid/js-sdk';
 import { v4 as uuidv4 } from 'uuid';
 
 // TODO(illia-korotia): @0xpolygonid/js-sdk v1.9.x has problem with nextjs.
