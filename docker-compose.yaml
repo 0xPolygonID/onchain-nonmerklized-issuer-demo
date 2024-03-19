@@ -1,12 +1,5 @@
 version: '3'
 services:
-  mongodb:
-    image: mongo
-    ports:
-      - "27017:27017" # TODO
-    volumes:
-      - ./data:/data/db
-
   client:
     build:
       context: client

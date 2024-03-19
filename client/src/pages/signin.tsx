@@ -58,25 +58,25 @@ const MyPage = () => {
   }, [sessionID, router]);
 
   return (
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ minHeight: '100vh' }}
-      >
-        {error && <ErrorPopup error={error} />}
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: '100vh' }}
+    >
+      {error && <ErrorPopup error={error} />}
 
-        <Grid xs={12} style={{marginTop: '-30px'}}>
-          <Typography textAlign="center" variant='h2'>
-            Use polygonID mobile app to scan this QR code
-          </Typography>
-        </Grid>
-        <Grid alignItems="center" xs={12} style={{marginTop: '30px'}}>
-          <QRCode value={JSON.stringify(qrCodeData)}/>
-        </Grid>
+      <Grid xs={12} style={{marginTop: '-30px'}}>
+        <Typography textAlign="center" variant='h2'>
+          Use polygonID mobile app to scan this QR code
+        </Typography>
       </Grid>
+      <Grid alignItems="center" xs={12} style={{marginTop: '30px'}}>
+        <QRCode value={JSON.stringify(qrCodeData)}/>
+      </Grid>
+    </Grid>
   );
 };
 
