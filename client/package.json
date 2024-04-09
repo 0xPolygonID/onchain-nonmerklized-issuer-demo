@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@iden3/js-crypto": "^1.0.3",
     "@iden3/js-iden3-core": "^1.2.1",
+    "@iden3/js-merkletree": "^1.1.2",
     "@metamask/sdk": "^0.4.1",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.13.7",

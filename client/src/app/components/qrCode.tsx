@@ -13,7 +13,7 @@ const Code: FunctionComponent<QRCodeData> = (props) => {
       <Box>
         <QRCode level={"L"} size={350} value={value} />
         <Button onClick={() => dispachEvent(value)} 
-            variant="contained" size="large" style={{width: '350px', marginTop: '15px'}}>Polygon ID</Button>
+          variant="contained" size="large" style={{width: '350px', marginTop: '15px'}}>Polygon ID</Button>
       </Box>
     </Container>
   );

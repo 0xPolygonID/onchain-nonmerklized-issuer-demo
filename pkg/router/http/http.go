@@ -12,20 +12,17 @@ import (
 type Handlers struct {
 	systemHandler         handlers.SystemHandler
 	authenticationHandler handlers.AuthenticationHandlers
-	iden3commHandler      handlers.Iden3commHandlers
 	issuerHandler         handlers.IssuerHandlers
 }
 
 func NewHandlers(
 	systemHandler handlers.SystemHandler,
 	authHendler handlers.AuthenticationHandlers,
-	iden3commHandler handlers.Iden3commHandlers,
 	issuerHandler handlers.IssuerHandlers,
 ) Handlers {
 	return Handlers{
 		systemHandler:         systemHandler,
 		authenticationHandler: authHendler,
-		iden3commHandler:      iden3commHandler,
 		issuerHandler:         issuerHandler,
 	}
 }
@@ -44,7 +41,6 @@ func (h *Handlers) NewRouter(opts ...Option) http.Handler {
 
 	h.basicRouters(r)
 	h.authRouters(r)
-	h.agentRouters(r)
 	h.apiRouters(r)
 
 	return r
@@ -61,18 +57,8 @@ func (h Handlers) authRouters(r *chi.Mux) {
 	r.Get("/api/v1/status", h.authenticationHandler.AuthenticationRequestStatus)
 }
 
-func (h Handlers) agentRouters(r *chi.Mux) {
-	r.Post("/api/v1/agent", h.iden3commHandler.Agent)
-}
-
 func (h Handlers) apiRouters(r *chi.Mux) {
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Get("/issuers", h.issuerHandler.GetIssuersList)
-		r.Route("/identities/{identifier}", func(r chi.Router) {
-			r.Use(middleware.ParseDID)
-
-			r.Post("/claims", h.issuerHandler.ConvertClaim)
-			r.Get("/claims/offer", h.issuerHandler.GetOffer)
-		})
 	})
 }
