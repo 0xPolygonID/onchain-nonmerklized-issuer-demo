@@ -46,8 +46,8 @@ const App = () => {
           transaction_data: {
             contract_address: addHexPrefix(routerQuery.contractAddress as string),
             method_id: "0x37c1d9ff",
-            chain_id: 80001,
-            network: "polygon-mumbai",
+            chain_id: 80002,
+            network: "polygon-amoy",
           }
         },
         from: routerQuery.issuer as string,

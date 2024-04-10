@@ -126,6 +126,8 @@ github.com/iden3/go-iden3-auth/v2 v2.0.0 h1:DMrnmBY2lGhLjI6jLK2AE42FMIlgQc+vbeM+
 github.com/iden3/go-iden3-auth/v2 v2.0.0/go.mod h1:bYr47aev7sh23RL7Ru+TQQSlYDS94+wO8P8SDrwdifc=
 github.com/iden3/go-iden3-core/v2 v2.0.4 h1:ggzC2zgOWgJAAcuG9X8bQG1r4gAoHZWqY7aLV8b1qgc=
 github.com/iden3/go-iden3-core/v2 v2.0.4/go.mod h1:L9PxhWPvoS9qTb3inEkZBm1RpjHBt+VTwvxssdzbAdw=
+github.com/iden3/go-iden3-core/v2 v2.1.0 h1:R1s7Tj3tIx5lDy8S7OJrSNuxXIFeRzWRmTBaQoQHJps=
+github.com/iden3/go-iden3-core/v2 v2.1.0/go.mod h1:L9PxhWPvoS9qTb3inEkZBm1RpjHBt+VTwvxssdzbAdw=
 github.com/iden3/go-iden3-crypto v0.0.15 h1:4MJYlrot1l31Fzlo2sF56u7EVFeHHJkxGXXZCtESgK4=
 github.com/iden3/go-iden3-crypto v0.0.15/go.mod h1:dLpM4vEPJ3nDHzhWFXDjzkn1qHoBeOT/3UEhXsEsP3E=
 github.com/iden3/go-jwz/v2 v2.0.0 h1:VsU2PrmcchPMx/V0IhamMZRNjiQYZoyJopO8K8uSZOY=

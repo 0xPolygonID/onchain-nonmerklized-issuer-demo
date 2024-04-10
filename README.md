@@ -34,11 +34,11 @@ This is a demo frontend page that communicates with the [non-merklized on-chain 
     Available flags:
     - `contract_address` - contract address that will convert to did
     - `network` - network of the contract. Default: **polygon**
-    - `chain` - chain of the contract. Default: **mumbai**
+    - `chain` - chain of the contract. Default: **amoy**
 
 5. Fill the `.env` config file with the proper variables:
     ```bash
-    SUPPORTED_RPC="80001=<RPC_POLYGON_MUMBAI>"
+    SUPPORTED_RPC="80002=<RPC_POLYGON_AMOY>"
     ISSUERS="<ISSUER_DID>"
     EXTERNAL_HOST="<NGROK_URL>"
     ```
@@ -58,6 +58,7 @@ This is a demo frontend page that communicates with the [non-merklized on-chain 
 3. Select the verifier based on your network:
     - For polygon mumbai: `Mumbai`
     - For polygon mainnet: `Mainnet`
+    - For polygon amoy: `Amoy`
 4. Fill out the form:
     - **Circuit Id**: Credential Atomic Query MTP
     - **Url**: https://gist.githubusercontent.com/ilya-korotya/660496c859f8d31a7d2a92ca5e970967/raw/6b5fc14fe630c17bfa52e05e08fdc8394c5ea0ce/non-merklized-non-zero-balance.jsonld
