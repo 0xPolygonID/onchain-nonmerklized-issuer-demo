@@ -24,10 +24,6 @@ export async function selectMetamaskWallet(): Promise<MetamaskWalletResponse> {
     }
 
     const web3 = new Web3(window.ethereum);
-    const networkId = await web3.eth.net.getId();
-    if (networkId !== BigInt(80001)) {
-      throw new Error('Please select Polygon Mumbai network');
-    }
 
     const balance = await web3.eth.getBalance(accounts[0]);
     const balanceInEther = web3.utils.fromWei(balance, 'ether');

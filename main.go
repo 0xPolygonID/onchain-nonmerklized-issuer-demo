@@ -115,6 +115,7 @@ func chainIDToDIDPrefix(chainID int) string {
 	p := map[int]string{
 		137:   "polygon:main",
 		80001: "polygon:mumbai",
+		80002: "polygon:amoy",
 	}
 	return p[chainID]
 }

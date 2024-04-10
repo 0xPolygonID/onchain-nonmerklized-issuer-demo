@@ -12,7 +12,7 @@ import (
 
 var contractAddress = flag.String("contract_address", "", "Contract address for converting to DID")
 var network = flag.String("network", string(core.Polygon), "Network name")
-var chain = flag.String("chain", string(core.Mumbai), "Chain name")
+var chain = flag.String("chain", string(core.Amoy), "Chain name")
 
 func main() {
 	flag.Parse()
