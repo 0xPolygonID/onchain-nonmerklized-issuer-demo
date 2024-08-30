@@ -1,9 +1,12 @@
+'use client';
+
 import { useState, useContext, useEffect } from 'react'
 import { QRCode } from '@/app/components'
 import { useRouter } from 'next/router';
 import { Grid, Typography } from '@mui/material';
 import SelectedIssuerContext from '@/contexts/SelectedIssuerContext';
 import { v4 as uuidv4 } from 'uuid';
+import { PROTOCOL_CONSTANTS } from '@0xpolygonid/js-sdk'
 
 // TODO(illia-korotia): @0xpolygonid/js-sdk v1.9.x has problem with nextjs.
 // These constants should be imported from @0xpolygonid/js-sdk
