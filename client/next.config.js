@@ -1,20 +1,36 @@
 const nextConfig = {
-    async headers() {
-        return [
+  async headers() {
+    return [
+      {
+        source: "/",
+        headers: [
           {
-            source: '/',
-            headers: [
-              {
-                key: 'Access-Control-Allow-Origin',
-                value: '*',
-              }
-            ],
+            key: "Access-Control-Allow-Origin",
+            value: "*",
           },
-        ]
+        ],
       },
-    publicRuntimeConfig: {
-      NEXT_PUBLIC_ISSUER_URL: process.env.NEXT_PUBLIC_ISSUER_URL,
-    },  
-}
+    ];
+  },
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_ISSUER_URL: process.env.NEXT_PUBLIC_ISSUER_URL,
+  },
 
-module.exports = nextConfig
+  webpack: (config, options) => {
+    const opt = {
+      ...config,
+      optimization: {
+        ...config.optimization,
+        splitChunks: false,
+        // runtimeChunk: false,
+        // minimize: false,
+        // emitOnErrors: false,
+        // usedExports: false
+      },
+    };
+    // console.log(opt);
+    return opt;
+  },
+};
+
+module.exports = nextConfig;
