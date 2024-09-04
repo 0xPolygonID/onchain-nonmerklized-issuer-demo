@@ -1,0 +1,60 @@
+name: Push onchain non merklized frontend to AWS ECR
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID_PRIVADO_ID }}
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION_PRIVADO_ID }}
+  ECR_REPOSITORY: onchain_non_merklized_issuer_frontend_demo
+  NEXT_PUBLIC_ISSUER_URL: ${{ vars.NEXT_PUBLIC_ISSUER_URL }}
+
+jobs:
+  deploy:
+    environment:
+      name: ${{ github.ref_name }}
+    name: Build and deploy ochain non merklized issuer frontend to AWS ECR
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/PolygonIDActionsRole
+          role-session-name: GitHubActionsSession
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+        id: login-ecr
+
+      - name: Get version
+        run: echo "::set-output name=VERSION::$(git rev-parse --short HEAD)"
+        id: version
+
+      - name: Build with tag and push image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ steps.version.outputs.VERSION }}
+        run: |
+          docker build \
+            -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest \
+            -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} \
+            --build-arg="NEXT_PUBLIC_ISSUER_URL=${{ env.NEXT_PUBLIC_ISSUER_URL }}" \
+            -f client/Dockerfile client
+
+          docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
