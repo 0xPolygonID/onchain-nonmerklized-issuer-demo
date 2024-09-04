@@ -28,9 +28,10 @@ func main() {
 
 	ethAddrHex := strings.TrimPrefix(*contractAddress, "0x")
 
+	const didMethod = core.DIDMethodIden3
 	genesis := genFromHex("00000000000000" + ethAddrHex)
 	tp, err := core.BuildDIDType(
-		core.DIDMethodPolygonID,
+		didMethod,
 		core.Blockchain(*network),
 		core.NetworkID(*chain))
 	if err != nil {
@@ -39,7 +40,7 @@ func main() {
 	id0 := core.NewID(tp, genesis)
 
 	s := fmt.Sprintf("did:%s:%s:%s:%v",
-		core.DIDMethodPolygonID, *network, *chain, id0.String())
+		didMethod, *network, *chain, id0.String())
 	fmt.Println("did:", s)
 }
 
