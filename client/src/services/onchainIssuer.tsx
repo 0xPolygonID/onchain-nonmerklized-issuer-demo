@@ -9,7 +9,13 @@ export const issueCredential = async (contractAddress: string, userId: Id) => {
   const from = accounts[0];
   const onchainNonMerklizedIssuer = new web3.eth.Contract(contractABI, contractAddress);
 
-  await onchainNonMerklizedIssuer.methods.issueCredential(userId.bigInt()).send({ from });
+  const gasPrice = await web3.eth.getGasPrice();
+  const priorityGasPrice = gasPrice * BigInt(150) / BigInt(100);
+
+  await onchainNonMerklizedIssuer.methods.issueCredential(userId.bigInt()).send({ 
+    from, 
+    maxPriorityFeePerGas: priorityGasPrice.toString(),
+  });
 };
 
 export const getUserCredentialIds = async (contractAddress: string, userId: Id): Promise<Array<string>> => {
