@@ -38,7 +38,8 @@ This is a demo frontend page that communicates with the [non-merklized on-chain 
 
 5. Fill the `.env` config file with the proper variables:
     ```bash
-    SUPPORTED_RPC="80002=<RPC_POLYGON_AMOY>"
+    SUPPORTED_STATE_CONTRACTS="80002=<AMOY_STATE_CONTRACT_ADDRESS>,21000=<PRIVADO_STATE_CONTRACT_ADDRESS>"
+    SUPPORTED_RPC="80002=<RPC_POLYGON_AMOY>,21000=<RPC_PRIVADO_MAIN>"
     ISSUERS="<ISSUER_DID>"
     EXTERNAL_HOST="<NGROK_URL>"
     ```
@@ -53,21 +54,23 @@ This is a demo frontend page that communicates with the [non-merklized on-chain 
 7. Open: http://localhost:3000
 
 ## How to verify the non zero balance claim:
-1. Visit [https://verifier-demo.polygonid.me/](https://verifier-demo.polygonid.me/).
-2. Choose `custom` from the drop-down menu.
-3. Select the verifier based on your network:
-    - For polygon mumbai: `Mumbai`
-    - For polygon mainnet: `Mainnet`
-    - For polygon amoy: `Amoy`
-4. Fill out the form:
-    - **Circuit Id**: Credential Atomic Query MTP
-    - **Url**: https://gist.githubusercontent.com/ilya-korotya/660496c859f8d31a7d2a92ca5e970967/raw/6b5fc14fe630c17bfa52e05e08fdc8394c5ea0ce/non-merklized-non-zero-balance.jsonld
-    - **Type**: Balance
-    - **Field**: balance
-    - **Operator**: All operators work for the claim
-    - **Value**: Set the value that you want to compare
-5. Press submit.
-6. Use the mobile application to verify.
+1. Visit [https://tools.privado.id/query-builder](https://tools.privado.id/query-builder).
+2. Build the next verification request:
+    ```text
+    URL to JSON-LD Context: https://gist.githubusercontent.com/ilya-korotya/660496c859f8d31a7d2a92ca5e970967/raw/6b5fc14fe630c17bfa52e05e08fdc8394c5ea0ce/non-merklized-non-zero-balance.jsonld
+    
+    Schema type: Balance
+
+    Attribute field: balance | address
+
+    Proof type: Merkle Tree Proof (MTP)
+
+    Circuit ID: any
+
+    Query type: Selective disclosure
+    ```
+3. Press: Create query
+4. Scan the QR code with PrivadoID application
 
 ## License
 

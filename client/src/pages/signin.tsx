@@ -70,7 +70,7 @@ const MyPage = () => {
 
       <Grid xs={12} style={{marginTop: '-30px'}}>
         <Typography textAlign="center" variant='h2'>
-          Use polygonID mobile app to scan this QR code
+          Use PrivadoID mobile app to scan this QR code
         </Typography>
       </Grid>
       <Grid alignItems="center" xs={12} style={{marginTop: '30px'}}>
