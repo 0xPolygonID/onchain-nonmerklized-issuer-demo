@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2';
 import SelectedIssuerContext from '@/contexts/SelectedIssuerContext';
 import { useRouter } from 'next/router';
+import { switchNetwork } from '@/services/onchainIssuer';
 
 const App = () => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    switchNetwork();
     const fetchIssuers = async () => {
       try {
         const issuers = await getIssuersList();
